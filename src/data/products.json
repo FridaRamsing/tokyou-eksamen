@@ -1,0 +1,276 @@
+
+[
+    {
+        "id": 1,
+        "name": "AVAVAV",
+        "description": "Finger ankle boots",
+        "price": "12.000 DKK",
+        "image": "https://avavav.com/_next/image?url=https%3A%2F%2Favavav.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F373_b2223e4c8f-f24r1502-1830-2-mega.jpg&w=3840&q=75",
+        "Category": "shoes",
+        "brand": "AVAVAV",
+        "color": "black",
+        "size": "36-41",
+        "inStock": true
+
+    },
+
+    {
+        "id": 2,
+        "name": "AVAVAV",
+        "description": "Adidas originals by AVAVAV moonrubber",
+        "price": "2.600 DKK",
+        "image": "https://avavav.com/_next/image?url=https%3A%2F%2Favavav.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1328_633591bcf8-jr4371_key-packshot-2-mega.jpg&w=3840&q=75",
+        "Category": "shoes",
+        "brand": "AVAVAV",
+        "color": "black",
+        "size": "36-41",
+        "inStock": true
+    },
+    
+    {
+        "id": 3,
+        "name": "AVAVAV",
+        "description": "Adidas originals by AVAVAV moonrubber",
+        "price": "2.000 DKK",
+        "image": "https://avavav.com/_next/image?url=https%3A%2F%2Favavav.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1328_0fe200c774-hq4998_key-packshot-2-mega.jpg&w=3840&q=75",
+        "Category": "shoes",
+        "brand": "AVAVAV",
+        "color": "black",
+        "size": "36-41",
+        "inStock": true
+    },
+
+    {
+        "id": 4,
+        "name": "Balenciaga",
+        "description": "Baggy pants",
+        "price": "10.000 DKK",
+        "image": "https://balenciaga.dam.kering.com/m/2c75514dbbcf473a/Large-814161TNW655760_F.jpg?v=3",
+        "Category": "pants",
+        "brand": "Balenciaga",
+        "color": "blue",
+        "size": "M",
+        "inStock": true
+    },
+    
+    {
+        "id": 5,
+        "name": "Balenciaga",
+        "description": "Patched pocket baggy pants",
+        "price": "10.800 DKK",
+        "image": "https://balenciaga.dam.kering.com/m/1c504b6e705019a/Large-751111TDW143359_F.jpg?v=4",
+        "Category": "pants",
+        "brand": "Balenciaga",
+        "color": "grey",
+        "size": "S-L",
+        "inStock": true
+    },
+    
+    {
+        "id": 6,
+        "name": "Rhude",
+        "description": "Regatta yacht club hoodie",
+        "price": "5.280 DKK",
+        "image": "https://cdn-images.farfetch-contents.com/34/39/96/04/34399604_65746899_1000.jpg",
+        "Category": "hoodies",
+        "brand": "Rhude",
+        "color": "black",
+        "size": "M",
+        "inStock": true
+    },
+    
+    {
+        "id": 7,
+        "name": "Ami Paris",
+        "description": "Ami de cour sweater",
+        "price": "2.900 DKK",
+        "image": "https://cdn-images.farfetch-contents.com/30/65/11/56/30651156_65613626_1000.jpg",
+        "Category": "sweaters",
+        "brand": "Ami Paris",
+        "color": "black",
+        "size": "M",
+        "inStock": true
+    },
+    
+    {
+        "id": 8,
+        "name": "Maniére De Voir",
+        "description": "Armen Bomber jacket",
+        "price": "2.370 DKK",
+        "image": "https://cdn-images.farfetch-contents.com/32/28/09/44/32280944_63514785_1000.jpg",
+        "Category": "sweaters",
+        "brand": "Maniére De Voir",
+        "color": "red",
+        "size": "S-L",
+        "inStock": true
+    },
+    
+    {
+        "id": 9,
+        "name": "Cahartt",
+        "description": "Mitch jacket with hood and ziplock",
+        "price": "2.160 DKK",
+        "image": "https://cdn-images.farfetch-contents.com/33/06/66/04/33066604_63623424_1000.jpg",
+        "Category": "sweaters",
+        "brand": "Cahartt",
+        "color": "grey",
+        "size": "S-L",
+        "inStock": true
+    },
+    
+    {
+        "id": 10,
+        "name": "Arc'teryx",
+        "description": "Beta SL jacket with hood",
+        "price": "2.500 DKK",
+        "image": "https://images-dynamic-arcteryx.imgix.net/details/1350x1710/S26-X000010552-Beta-SL-Jacket-Black.jpg?auto=format&q=70&fit=crop&fill=white&max-w=1350&max-h=1710&ixlib=react-9.10.0&w=1446",
+        "Category": "jackets",
+        "brand": "Arc'teryx",
+        "color": "black",
+        "size": "S-L",
+        "inStock": true
+    },
+    
+    {
+        "id": 11,
+        "name": "Simon Rocha",
+        "description": "Bomber-Jacket",
+        "price": "8.400 DKK",
+        "image": "https://cdn-images.farfetch-contents.com/32/31/17/09/32311709_62787639_1000.jpg",
+        "Category": "jackets",
+        "brand": "Simon Rocha",
+        "color": "black",
+        "size": "S-L",
+        "inStock": true
+    },
+    
+    {
+        "id": 12,
+        "name": "Vale",
+        "description": "Sea cluster sweater with ziplock",
+        "price": "3.700 DKK",
+        "image": "https://cdn-images.farfetch-contents.com/32/66/33/57/32663357_63017640_1000.jpg",
+        "Category": "sweaters",
+        "brand": "Vale",
+        "color": "blue",
+        "size": "M",
+        "inStock": true
+    },
+    
+    {
+        "id": 13,
+        "name": "Ami Paris",
+        "description": "Embroidered ami de cour sweater",
+        "price": "2.900 DKK",
+        "image": "https://cdn-images.farfetch-contents.com/33/11/70/27/33117027_63533897_322.jpg",
+        "Category": "sweaters",
+        "brand": "Ami Paris",
+        "color": "off-white",
+        "size": "M",
+        "inStock": true
+    },
+    
+    {
+        "id": 14,
+        "name": "Jill Sander",
+        "description": "T-shirt with logo press",
+        "price": "3.100 DKK",
+        "image": "https://cdn-images.farfetch-contents.com/19/38/97/30/19389730_42632282_1000.jpg",
+        "Category": "t-shirts",
+        "brand": "Jill Sander",
+        "color": "off-white",
+        "size": "M",
+        "inStock": true
+    },
+    
+    {
+        "id": 15,
+        "name": "The Frankie Shop",
+        "description": "Viper leather jacket",
+        "price": "4.250 DKK",
+        "image": "https://cdn-images.farfetch-contents.com/31/84/43/96/31844396_64158959_1000.jpg",
+        "Category": "jackets",
+        "brand": "The Frankie Shop",
+        "color": "brown",
+        "size": "M",
+        "inStock": true
+    },
+    
+    {
+        "id": 16,
+        "name": "Maniére De Voir",
+        "description": "Needle striped delphine blazer",
+        "price": "2.700 DKK",
+        "image": "https://cdn-images.farfetch-contents.com/33/32/36/59/33323659_64812384_1000.jpg",
+        "Category": "blazers",
+        "brand": "Maniére De Voir",
+        "color": "grey",
+        "size": "M",
+        "inStock": true
+    },
+    
+    {
+        "id": 17,
+        "name": "Sandro",
+        "description": "Jacket in tweed",
+        "price": "3.380 DKK",
+        "image": "https://cdn-images.farfetch-contents.com/29/91/42/30/29914230_60294871_1000.jpg",
+        "Category": "blazers",
+        "brand": "Sandro",
+        "color": "black",
+        "size": "M",
+        "inStock": true
+    },
+    
+    {
+        "id": 18,
+        "name": "Bombour",
+        "description": "Alma jacket",
+        "price": "2.800 DKK",
+        "image": "https://www.magasin.dk/dw/image/v2/BFCS_PRD/on/demandware.static/-/Sites-mdn-master-catalog/default/dw429cc71f/large2/88/5020985755295.jpg?sw=850&sh=1020&sm=fit&sfrm=jpg",
+        "Category": "jackets",
+        "brand": "Bombour",
+        "color": "black",
+        "size": "M",
+        "inStock": true
+    },
+    
+    {
+        "id": 19,
+        "name": "Maje",
+        "description": "Ribbed knitted sweater",
+        "price": "3.200 DKK",
+        "image": "hhttps://cdn-images.farfetch-contents.com/32/63/40/83/32634083_63048860_1000.jpg",
+        "Category": "sweaters",
+        "brand": "Maje",
+        "color": "off-white",
+        "size": "M",
+        "inStock": true
+    },
+    
+    {
+        "id": 20,
+        "name": "Jill Sander",
+        "description": "T-shirt with logo press",
+        "price": "3.100 DKK",
+        "image": "https://cdn-images.farfetch-contents.com/19/38/97/30/19389730_42632282_1000.jpg",
+        "Category": "t-shirts",
+        "brand": "Jill Sander",
+        "color": "off-white",
+        "size": "M",
+        "inStock": true
+    },
+    
+    {
+        "id": 21,
+        "name": "American Vintage",
+        "description": "Newbay sweater with stripes",
+        "price": "4.250 DKK",
+        "image": "https://cdn-images.farfetch-contents.com/31/84/43/96/31844396_64158959_1000.jpg",
+        "Category": "jackets",
+        "brand": "The Frankie Shop",
+        "color": "brown",
+        "size": "M",
+        "inStock": true
+    }
+]
