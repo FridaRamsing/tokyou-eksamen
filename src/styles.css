@@ -628,8 +628,8 @@ body {
   font-size: 30px;
 }
 
-.arrow.left { left: 56px; }
-.arrow.right { right: 50px; }
+.arrow.left { left: calc((100% - var(--viewport-width)) / 2 - 48px); }
+.arrow.right { right: calc((100% - var(--viewport-width)) / 2 - 48px); }
 
 
 /* Sale Banner */
