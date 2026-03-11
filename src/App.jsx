@@ -1,15 +1,10 @@
 import { Routes, Route } from "react-router";
-import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
-import ContactPage from "./pages/ContactPage";
-import NotFoundPage from "./pages/NotFoundPage";
 import Products from "./pages/Products";
 
 export default function App() {
   return (
     <>
-
       <Routes>
         <Route path="/products" element={<Products />} />
         <Route path="/mood" element={<div>Mood page</div>} />

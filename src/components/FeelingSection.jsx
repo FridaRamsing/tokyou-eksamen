@@ -1,5 +1,5 @@
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function FeelingSection() {
   const moods = [
@@ -84,18 +84,10 @@ export default function FeelingSection() {
 
   const maxIndex = Math.max(0, moods.length - metrics.visibleCount);
 
-  useEffect(() => {
-    setIndex((prev) => Math.min(prev, maxIndex));
-  }, [maxIndex]);
+  const clampedIndex = Math.min(index, maxIndex);
 
-  const translateX = useMemo(() => {
-    return index * (metrics.cardWidth + metrics.gap);
-  }, [index, metrics.cardWidth, metrics.gap]);
-
-  const progress = useMemo(() => {
-    if (maxIndex === 0) return 0;
-    return index / maxIndex;
-  }, [index, maxIndex]);
+  const translateX = clampedIndex * (metrics.cardWidth + metrics.gap);
+  const progress = maxIndex === 0 ? 0 : clampedIndex / maxIndex;
 
   return (
     <section className="feeling" ref={sectionRef}>
@@ -131,8 +123,13 @@ export default function FeelingSection() {
       <button
         className="arrow left"
         aria-label="Previous"
-        onClick={() => setIndex((prev) => Math.max(0, prev - 1))}
-        disabled={index === 0}
+        onClick={() =>
+          setIndex((prev) => {
+            const safe = Math.min(prev, maxIndex);
+            return Math.max(0, safe - 1);
+          })
+        }
+        disabled={clampedIndex === 0}
       >
         <span className="arrow-icon">←</span>
       </button>
@@ -140,8 +137,13 @@ export default function FeelingSection() {
       <button
         className="arrow right"
         aria-label="Next"
-        onClick={() => setIndex((prev) => Math.min(maxIndex, prev + 1))}
-        disabled={index === maxIndex}
+        onClick={() =>
+          setIndex((prev) => {
+            const safe = Math.min(prev, maxIndex);
+            return Math.min(maxIndex, safe + 1);
+          })
+        }
+        disabled={clampedIndex === maxIndex}
       >
         <span className="arrow-icon">→</span>
       </button>

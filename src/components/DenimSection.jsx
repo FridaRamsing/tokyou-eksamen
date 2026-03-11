@@ -23,7 +23,7 @@ export default function DenimSection() {
 
       <article className="denim-card">
         <img
-          src="https://i.pinimg.com/736x/15/7b/be/157bbed802f14ee7094d1432713e791c.jpg"
+          src="https://i.pinimg.com/736x/b7/41/f0/b741f0db06e9b932f336ad9e63b7cee8.jpg"
           alt="Boss B*tch Heels"
         />
         <h3>BOSS B*TCH HEELS</h3>

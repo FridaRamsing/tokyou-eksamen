@@ -11,7 +11,7 @@ export default function MoodBannerSection() {
         alt="Mood center"
       />
       <img
-        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=80"
+        src="https://i.pinimg.com/1200x/47/75/7e/47757e5299296d921aa0dbb46a22cf68.jpg"
         alt="Mood right"
       />
 

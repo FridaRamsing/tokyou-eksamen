@@ -6,7 +6,7 @@ import { NavLink } from "react-router";
 import NewInSection from "../components/NewInSection";
 import ShopGenderSection from "../components/ShopGenderSection";
 import MoodBannerSection from "../components/MoodBannerSection";
-import FeelingSecition from "../components/FeelingSection";
+import FeelingSection from "../components/FeelingSection";
 import SaleBannerSection from "../components/SaleBannerSection";
 import DenimSection from "../components/DenimSection";
 import WornByYouSection from "../components/WornByYouSection";
@@ -476,13 +476,21 @@ export default function HomePage() {
       )}
       {/* 3 Hero */}
       <section className="lp-hero">
-        <h1> FEATURED HERO VIDEO HERE</h1>
+        <video
+          className="lp-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src="/tokyou-hero-video.mp4" type="video/mp4" />
+        </video>
       </section>
 
       <NewInSection />
       <ShopGenderSection />
       <MoodBannerSection />
-      <FeelingSecition />
+      <FeelingSection />
       <SaleBannerSection />
       <DenimSection />
       <WornByYouSection />

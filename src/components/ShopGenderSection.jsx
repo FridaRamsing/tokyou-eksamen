@@ -4,7 +4,7 @@ export default function ShopGenderSection() {
     <section className="shop-gender">
       <article className="shop-gender-card">
         <img
-          src="https://images.unsplash.com/photo-1571513800374-df1bbe650e56?auto=format&fit=crop&w=1200&q=80"
+          src="https://i.pinimg.com/736x/8b/21/3c/8b213cce74be820120f31d2a612e7aea.jpg"
           alt="Shop Women"
         />
         <h3>SHOP WOMEN</h3>
