@@ -1,7 +1,10 @@
-
+// MoodBannerSection
+// Decorative banner made of three images and an overlay call-to-action.
+// Presentational only.
 export default function MoodBannerSection() {
   return (
     <section className="mood-banner">
+      {/* Background triptych */}
       <img
         src="https://i.pinimg.com/736x/5b/8d/e5/5b8de5b0b63bfeba8c6c42879fa880d9.jpg"
         alt="Mood left"
@@ -15,6 +18,7 @@ export default function MoodBannerSection() {
         alt="Mood right"
       />
 
+      {/* Overlay CTA */}
       <div className="mood-overlay">
         <h2>DRESS AS YOU FEEL</h2>
         <button>PICK A MOOD AND SHOP IT</button>

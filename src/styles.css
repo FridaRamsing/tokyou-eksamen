@@ -1,6 +1,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Mohave:wght@400&display=swap");
 
+/* Global tokens + layout helpers. Sections below follow the page order. */
 
 :root {
   --bg: #fbfbfb;
@@ -14,6 +15,24 @@ body {
   background: var(--bg);
   font-family: Jost, sans-serif;
   color: var(--text);
+}
+
+/* A11y: consistent focus rings for keyboard users */
+:focus-visible {
+  outline: 2px solid #d52522;
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .lp-page {
@@ -67,6 +86,8 @@ body {
 
 .lp-logo {
   justify-self: center;
+  display: inline-flex;
+  align-items: center;
 }
 
 .lp-right {
@@ -155,9 +176,16 @@ body {
 
 .lp-logo {
   color: var(--logo);
-  font-size: 48px;
-  font-weight: 500;
-  letter-spacing: 1.92px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.lp-logo img {
+  height: 48px;
+  width: auto;
+  display: block;
 }
 
 .lp-menu {
@@ -297,6 +325,8 @@ body {
 .cart-panel {
   position: relative;
   width: 520px;
+  max-height: 70vh;
+  overflow: auto;
   background: #ffffff;
   padding: 40px 36px 36px;
   text-align: center;
@@ -343,6 +373,98 @@ body {
   color: #101012;
   text-decoration: underline;
   font-size: 14px;
+}
+
+.cart-count {
+  margin: 0 0 16px;
+  font-size: 12px;
+  color: #6b6b6b;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: grid;
+  gap: 12px;
+  text-align: left;
+}
+
+.cart-list li {
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  gap: 16px;
+  align-items: start;
+  background: #f7f7f7;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.cart-list img,
+.cart-thumb {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.cart-thumb {
+  background: #f2f2f2;
+}
+
+.cart-item-meta {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.cart-item-brand {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.cart-item-desc {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #4d4d4d;
+}
+
+.cart-item-size {
+  font-size: 11px;
+  color: #4d4d4d;
+}
+
+.cart-item-price {
+  font-size: 12px;
+}
+
+.cart-remove {
+  border: 0;
+  background: none;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #7a7a7a;
+  cursor: pointer;
+  align-self: start;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart-clear {
+  border: 1px solid #101012;
+  background: #fff;
+  padding: 8px 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .cart-backdrop {
@@ -865,6 +987,18 @@ body {
 .newsletter-social {
   display: flex;
   gap: 10px;
+  position: relative;
+  padding-top: 12px;
+}
+
+.newsletter-social::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 2px;
+  background: #7c7a5d;
 }
 
 .newsletter-social .social {
@@ -876,6 +1010,10 @@ body {
   border-radius: 50%;
   background: #b6b48f;
   font-size: 12px;
+}
+
+.newsletter-social .social--trust {
+  font-size: 14px;
 }
 
 .newsletter-divider {
@@ -894,6 +1032,10 @@ body {
   margin: 0 0 14px;
   font-size: 12px;
   font-family: Mohave, sans-serif;
+}
+
+.newsletter-link {
+  text-decoration: underline;
 }
 
 .newsletter-lang {
@@ -971,6 +1113,19 @@ body {
   color: #2d2d2d;
   text-decoration: none;
   margin: 4px 0;
+}
+
+.trustpilot-badge {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #2d2d2d;
+}
+
+.trustpilot-badge svg {
+  color: #2d2d2d;
 }
 
 /* Products Page */
@@ -1065,6 +1220,11 @@ body {
   cursor: default;
 }
 
+.filter-chip.is-active {
+  background: #101012;
+  color: #fff;
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1095,12 +1255,17 @@ body {
   border: 0;
   border-radius: 999px;
   background: #ffffff;
+  color: #101012;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
   cursor: pointer;
   z-index: 2;
+}
+
+.product-like.is-liked {
+  color: #d52522;
 }
 
 .product-image {
@@ -1273,6 +1438,199 @@ body {
   align-items: center;
   justify-content: center;
   gap: 6px;
+}
+
+.product-fav.is-liked {
+  border-color: #d52522;
+  color: #d52522;
+}
+
+.product-fav-icon {
+  display: inline-flex;
+  color: currentColor;
+}
+
+/* Quick buy */
+.quickbuy-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+}
+
+.quickbuy-panel {
+  position: relative;
+  width: 320px;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  text-align: center;
+}
+
+.quickbuy-panel h3 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.quickbuy-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.quickbuy-size {
+  min-width: 56px;
+  padding: 8px 10px;
+  border: 1px solid #101012;
+  background: #fff;
+  text-transform: uppercase;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.quickbuy-size.is-active {
+  background: #101012;
+  color: #fff;
+}
+
+.quickbuy-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: 0;
+  background: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.quickbuy-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Likes overlay */
+.likes-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+}
+
+.likes-panel {
+  position: relative;
+  width: 560px;
+  max-height: 70vh;
+  overflow: auto;
+  background: #ffffff;
+  padding: 28px 28px 32px;
+  text-align: left;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  z-index: 2;
+}
+
+.likes-panel h2 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.likes-count {
+  font-size: 12px;
+  color: #7a7a7a;
+  font-weight: 400;
+}
+
+.likes-empty {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #4d4d4d;
+}
+
+.likes-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: 0;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.likes-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.likes-list li {
+  background: #f7f7f7;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.likes-list a {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 22px;
+  text-decoration: none;
+  color: #2d2d2d;
+  align-items: start;
+}
+
+.likes-list img {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  background: #f2f2f2;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.likes-meta {
+  display: grid;
+  gap: 6px;
+  padding-top: 2px;
+}
+
+.likes-brand {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.likes-desc {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #4d4d4d;
+}
+
+.likes-price {
+  font-size: 12px;
+  color: #2d2d2d;
+}
+
+.likes-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 1;
 }
 
 .product-delivery {

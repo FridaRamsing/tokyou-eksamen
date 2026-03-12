@@ -1,6 +1,10 @@
+// WornByYouSection
+// Presentational gallery section that shows a horizontal strip of user-inspired
+// looks. Static content; intended as a visual inspiration block.
 export default function WornByYouSection() {
   return (
     <section className="worn-by">
+      {/* Section header copy */}
       <div className="worn-by-header">
         <p className="worn-by-lead">Dare To Be Different?</p>
         <p className="worn-by-sub">
@@ -11,6 +15,7 @@ export default function WornByYouSection() {
         </a>
       </div>
 
+      {/* Horizontal image strip */}
       <div className="worn-by-strip">
         <img
           src="https://i.pinimg.com/736x/b4/10/ba/b410ba685f6f1a08178fba1192ed492c.jpg"
