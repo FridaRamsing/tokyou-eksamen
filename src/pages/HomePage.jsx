@@ -15,6 +15,9 @@ import FooterSection from "../components/FooterSection";
 // - Renders the SiteHeader and page-level sections in the design order.
 // - Sections are mostly presentational and source their data from static assets or products.json.
 export default function HomePage() {
+  // Use BASE_URL so the video works on GitHub Pages sub-paths.
+  const heroVideoSrc = `${import.meta.env.BASE_URL}tokyou-hero-video.mp4`;
+
   return (
     <main className="lp-page">
       <SiteHeader />
@@ -22,7 +25,7 @@ export default function HomePage() {
       {/* Hero video banner */}
       <section className="lp-hero">
         <video className="lp-hero-video" autoPlay muted loop playsInline>
-          <source src="/tokyou-hero-video.mp4" type="video/mp4" />
+          <source src={heroVideoSrc} type="video/mp4" />
         </video>
       </section>
 
