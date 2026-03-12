@@ -9,23 +9,19 @@ const sizeOptionsFrom = (size) => {
   const trimmed = size.trim();
   if (/^\d+-\d+$/.test(trimmed)) {
     const [start, end] = trimmed.split("-").map(Number);
-    if (Number.isFinite(start) && Number.isFinite(end)) {
-      const list = [];
-      for (let i = start; i <= end; i += 1) list.push(String(i));
-      return list;
-    }
+    const list = [];
+    for (let i = start; i <= end; i += 1) list.push(String(i));
+    return list;
   }
   if (trimmed.toUpperCase() === "S-L") return ["S", "M", "L"];
-  if (trimmed.includes("-")) {
-    return trimmed.split("-").map((part) => part.trim()).filter(Boolean);
-  }
+  if (trimmed.includes("-")) return trimmed.split("-").map((s) => s.trim());
   return [trimmed];
 };
 
 export default function ProductDetail() {
   const { productId } = useParams();
   const product = productsData.find(
-    (item) => String(item.id) === String(productId)
+    (item) => String(item.id) === String(productId),
   );
 
   const related = productsData
@@ -53,7 +49,6 @@ export default function ProductDetail() {
   return (
     <main className="lp-page">
       <SiteHeader />
-
       <section className="product-detail">
         <Link to="/products" className="products-back">
           ← Back to products
@@ -61,7 +56,10 @@ export default function ProductDetail() {
 
         <div className="product-detail-grid">
           <div className="product-gallery">
-            <button className="detail-arrow detail-arrow-left" aria-label="Prev">
+            <button
+              className="detail-arrow detail-arrow-left"
+              aria-label="Prev"
+            >
               ←
             </button>
             <div className="product-gallery-main">
@@ -86,17 +84,14 @@ export default function ProductDetail() {
             <select className="product-size-select" aria-label="Select size">
               <option value="">Select size</option>
               {sizeOptions.map((size) => (
-                <option key={size} value={size}>
-                  {size}
-                </option>
+                <option key={size}>{size}</option>
               ))}
             </select>
 
             <div className="product-actions">
               <button className="product-add">Add to bag</button>
               <button className="product-fav">
-                Favorites
-                <span className="product-fav-icon">♡</span>
+                Favorites <span className="product-fav-icon">♡</span>
               </button>
             </div>
 
@@ -127,7 +122,7 @@ export default function ProductDetail() {
           <h2>Product description</h2>
           <p>
             {product.brand} {product.description}. This is placeholder copy for
-            the product description and will be updated later.
+            the product description.
           </p>
         </div>
 
@@ -137,7 +132,10 @@ export default function ProductDetail() {
           </div>
           <div className="product-inspo-grid">
             {related.map((item) => (
-              <article key={item.id} className="product-card product-card--mini">
+              <article
+                key={item.id}
+                className="product-card product-card--mini"
+              >
                 <button
                   type="button"
                   className="product-like"
@@ -153,7 +151,9 @@ export default function ProductDetail() {
                     <h3 className="product-brand">{item.brand}</h3>
                     <p className="product-desc">{item.description}</p>
                     <p className="product-price">{item.price}</p>
-                    <span className="product-bag" aria-hidden="true">👜</span>
+                    <span className="product-bag" aria-hidden="true">
+                      👜
+                    </span>
                   </div>
                 </Link>
               </article>

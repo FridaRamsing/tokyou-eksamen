@@ -23,19 +23,19 @@ const priceOptions = [
 export default function Products() {
   const brands = useMemo(
     () => unique(productsData.map((p) => p.brand)).sort(),
-    []
+    [],
   );
   const categories = useMemo(
     () => unique(productsData.map((p) => p.Category)).sort(),
-    []
+    [],
   );
   const colors = useMemo(
     () => unique(productsData.map((p) => p.color)).sort(),
-    []
+    [],
   );
   const sizes = useMemo(
     () => unique(productsData.map((p) => p.size)).sort(),
-    []
+    [],
   );
 
   const [filters, setFilters] = useState({
@@ -61,7 +61,8 @@ export default function Products() {
       const matchesPrice = (() => {
         if (filters.price === "all") return true;
         if (filters.price === "under3000") return price < 3000;
-        if (filters.price === "3000to6000") return price >= 3000 && price <= 6000;
+        if (filters.price === "3000to6000")
+          return price >= 3000 && price <= 6000;
         if (filters.price === "6000plus") return price > 6000;
         return true;
       })();
@@ -147,7 +148,11 @@ export default function Products() {
           </select>
         </div>
 
-        <button type="button" className="filter-chip is-disabled" aria-disabled="true">
+        <button
+          type="button"
+          className="filter-chip is-disabled"
+          aria-disabled="true"
+        >
           Material
         </button>
 
@@ -186,11 +191,18 @@ export default function Products() {
           </select>
         </div>
 
-        <button type="button" className="filter-chip is-disabled" aria-disabled="true">
+        <button
+          type="button"
+          className="filter-chip is-disabled"
+          aria-disabled="true"
+        >
           Fit
         </button>
-
-        <button type="button" className="filter-chip is-disabled" aria-disabled="true">
+        <button
+          type="button"
+          className="filter-chip is-disabled"
+          aria-disabled="true"
+        >
           Other Filters
         </button>
       </section>
@@ -206,12 +218,11 @@ export default function Products() {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
               >
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
               </svg>
             </button>
+
             <Link to={`/products/${product.id}`} className="product-link">
               <div className="product-image">
                 <img src={product.image} alt={product.description} />
@@ -227,6 +238,7 @@ export default function Products() {
             </Link>
           </article>
         ))}
+
         {filteredProducts.length === 0 && (
           <p className="products-empty">No products match your filters.</p>
         )}
