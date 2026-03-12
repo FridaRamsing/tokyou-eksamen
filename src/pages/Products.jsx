@@ -4,15 +4,24 @@ import SiteHeader from "../components/SiteHeader";
 import NewsletterSection from "../components/NewsletterSection";
 import FooterSection from "../components/FooterSection";
 import productsData from "../data/products.json";
+import { useLikes } from "../context/LikesContext";
+import { useSearch } from "../context/SearchContext";
 
+// Helper: parsePrice
+// Converts a price string such as "2.600 DKK" or "2600" into a numeric value (e.g. 2600).
+// Returns 0 for falsy input. Keeps only digits and returns a Number.
 const parsePrice = (value) => {
   if (!value) return 0;
   const digits = value.toString().replace(/[^0-9]/g, "");
   return Number(digits || 0);
 };
 
+// Helper: unique
+// Returns a list of unique, truthy values from the provided array.
+// Used to build the distinct options for the filter dropdowns (brand, category, color, size).
 const unique = (list) => Array.from(new Set(list)).filter(Boolean);
 
+// Price dropdown options.
 const priceOptions = [
   { value: "all", label: "Price" },
   { value: "under3000", label: "Under 3.000 DKK" },
@@ -20,7 +29,27 @@ const priceOptions = [
   { value: "6000plus", label: "Over 6.000 DKK" },
 ];
 
+/**
+ * Products component
+ * Renders the product catalog page with search + multiple filter controls.
+ *
+ * Responsibilities:
+ * - Build option lists (brands, categories, colors, sizes) from product data.
+ * - Manage filter state (brand, category, color, size, price) and liked-only toggle.
+ * - Compute the filtered product list (combines search query, filters and liked state).
+ * - Render filter controls, product grid, and page chrome (header/footer/newsletter).
+ */
 export default function Products() {
+  // Likes API from context: check and toggle liked state for product ids.
+  const { isLiked, toggleLike } = useLikes();
+  // Global search query from context (keeps search box elsewhere in sync).
+  const { query } = useSearch();
+
+  // Filter option lists (computed once with useMemo for performance):
+  // - brands: sorted unique brand names
+  // - categories: sorted unique Category values
+  // - colors: sorted unique colors
+  // - sizes: sorted unique sizes
   const brands = useMemo(
     () => unique(productsData.map((p) => p.brand)).sort(),
     [],
@@ -38,6 +67,9 @@ export default function Products() {
     [],
   );
 
+  // Active filters + liked-only toggle state. `filters` holds the currently
+  // selected values from each select control. `likedOnly` restricts results to
+  // items the user has liked.
   const [filters, setFilters] = useState({
     brand: "All",
     category: "All",
@@ -45,9 +77,34 @@ export default function Products() {
     size: "All",
     price: "all",
   });
+  const [likedOnly, setLikedOnly] = useState(false);
 
+  /**
+   * filteredProducts (useMemo)
+   * Computes the visible products after applying:
+   * - the search query (across several fields),
+   * - each of the selected filters (brand, category, color, size, price),
+   * - and the liked-only toggle.
+   *
+   * The price matching uses parsePrice to convert product.price to a number
+   * and compares against the chosen price bucket.
+   */
   const filteredProducts = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
     return productsData.filter((product) => {
+      const matchesQuery =
+        normalizedQuery.length === 0 ||
+        [
+          product.brand,
+          product.name,
+          product.description,
+          product.Category,
+          product.color,
+        ]
+          .filter(Boolean)
+          .some((field) =>
+            field.toString().toLowerCase().includes(normalizedQuery),
+          );
       const matchesBrand =
         filters.brand === "All" || product.brand === filters.brand;
       const matchesCategory =
@@ -56,6 +113,7 @@ export default function Products() {
         filters.color === "All" || product.color === filters.color;
       const matchesSize =
         filters.size === "All" || product.size === filters.size;
+      const matchesLiked = !likedOnly || isLiked(product.id);
 
       const price = parsePrice(product.price);
       const matchesPrice = (() => {
@@ -68,19 +126,23 @@ export default function Products() {
       })();
 
       return (
+        matchesQuery &&
         matchesBrand &&
         matchesCategory &&
         matchesColor &&
         matchesSize &&
-        matchesPrice
+        matchesPrice &&
+        matchesLiked
       );
     });
-  }, [filters]);
+  }, [filters, likedOnly, isLiked, query]);
 
+  // Render the page: header, filters, product grid, and footer/newsletter.
   return (
     <main className="lp-page">
       <SiteHeader />
 
+      {/* Page intro */}
       <section className="products-hero">
         <NavLink to="/" className="products-back">
           ← Back to home
@@ -93,6 +155,7 @@ export default function Products() {
         </p>
       </section>
 
+      {/* Filters row */}
       <section className="products-filters" aria-label="Product filters">
         <div className="filter-pill">
           <select
@@ -148,14 +211,6 @@ export default function Products() {
           </select>
         </div>
 
-        <button
-          type="button"
-          className="filter-chip is-disabled"
-          aria-disabled="true"
-        >
-          Material
-        </button>
-
         <div className="filter-pill">
           <select
             className="filter-select"
@@ -193,29 +248,30 @@ export default function Products() {
 
         <button
           type="button"
-          className="filter-chip is-disabled"
-          aria-disabled="true"
+          className={`filter-chip ${likedOnly ? "is-active" : ""}`}
+          aria-pressed={likedOnly}
+          onClick={() => setLikedOnly((prev) => !prev)}
         >
-          Fit
-        </button>
-        <button
-          type="button"
-          className="filter-chip is-disabled"
-          aria-disabled="true"
-        >
-          Other Filters
+          Liked
         </button>
       </section>
 
+      {/* Product grid */}
       <section className="products-grid" aria-live="polite">
         {filteredProducts.map((product) => (
           <article key={product.id} className="product-card">
-            <button type="button" className="product-like" aria-label="Like">
+            <button
+              type="button"
+              className={`product-like ${isLiked(product.id) ? "is-liked" : ""}`}
+              aria-label="Like"
+              aria-pressed={isLiked(product.id)}
+              onClick={() => toggleLike(product.id)}
+            >
               <svg
                 viewBox="0 0 24 24"
                 width="18"
                 height="18"
-                fill="none"
+                fill={isLiked(product.id) ? "currentColor" : "none"}
                 stroke="currentColor"
                 strokeWidth="2"
               >

@@ -1,7 +1,17 @@
-
 import { useEffect, useRef, useState } from "react";
 
+// FeelingSection
+// A small horizontally-scrollable mood carousel.
+// Responsibilities and implementation notes:
+// - Reads layout metrics from CSS custom properties so JS calculations match design
+//   (card width, gap, viewport width, progress bar sizes).
+// - Calculates how many cards are visible (visibleCount) and the maximum scroll
+//   index (maxIndex). The visible transform is derived from a clamped index
+//   value; this prevents the UI from translating past available items.
+// - Exposes previous/next buttons which mutate the canonical index state. The
+//   UI uses a derived `clampedIndex` to avoid out-of-range rendering.
 export default function FeelingSection() {
+  // Mood carousel content (static for now).
   const moods = [
     {
       title: "FEELING ELEGANT",
@@ -33,6 +43,7 @@ export default function FeelingSection() {
     },
   ];
 
+  // Layout metrics are read from CSS custom properties.
   const sectionRef = useRef(null);
   const [metrics, setMetrics] = useState({
     cardWidth: 222,
@@ -45,6 +56,7 @@ export default function FeelingSection() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    // Read layout values from CSS so JS math matches design.
     const readMetrics = () => {
       if (!sectionRef.current) return;
       const styles = getComputedStyle(sectionRef.current);
@@ -64,7 +76,7 @@ export default function FeelingSection() {
       const barWidth = getVar("--bar-width", 128);
       const visibleCount = Math.max(
         1,
-        Math.floor((viewportWidth + gap) / (cardWidth + gap))
+        Math.floor((viewportWidth + gap) / (cardWidth + gap)),
       );
 
       setMetrics({
@@ -82,15 +94,18 @@ export default function FeelingSection() {
     return () => window.removeEventListener("resize", readMetrics);
   }, []);
 
+  // Clamp index so we never scroll past available items.
   const maxIndex = Math.max(0, moods.length - metrics.visibleCount);
 
   const clampedIndex = Math.min(index, maxIndex);
 
+  // Translate distance and progress bar position.
   const translateX = clampedIndex * (metrics.cardWidth + metrics.gap);
   const progress = maxIndex === 0 ? 0 : clampedIndex / maxIndex;
 
   return (
     <section className="feeling" ref={sectionRef}>
+      {/* Carousel viewport */}
       <div className="feeling-viewport">
         <div
           className="feeling-track"
@@ -109,6 +124,7 @@ export default function FeelingSection() {
         </div>
       </div>
 
+      {/* Progress indicator */}
       <div className="feeling-progress" aria-hidden="true">
         <span
           className="feeling-progress-bar"
@@ -120,6 +136,7 @@ export default function FeelingSection() {
         />
       </div>
 
+      {/* Prev/next controls */}
       <button
         className="arrow left"
         aria-label="Previous"

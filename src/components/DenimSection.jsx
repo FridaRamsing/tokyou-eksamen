@@ -1,6 +1,10 @@
+// DenimSection
+// Presentational component that renders three promotional cards for editorial
+// categories. Static content only — no state or interactions.
 export default function DenimSection() {
   return (
     <section className="denim-section">
+      {/* Denim edit */}
       <article className="denim-card">
         <img
           src="https://i.pinimg.com/736x/26/bc/e9/26bce90e03083c6536c8a6bd5564e9f3.jpg"
@@ -11,6 +15,7 @@ export default function DenimSection() {
         <a href="#">SHOP THE EDIT</a>
       </article>
 
+      {/* Satin shop */}
       <article className="denim-card">
         <img
           src="https://i.pinimg.com/736x/06/be/95/06be95c2cf6a6d2df7a5e97863c77867.jpg"
@@ -21,6 +26,7 @@ export default function DenimSection() {
         <a href="#">SHOP THE EDIT</a>
       </article>
 
+      {/* Heels */}
       <article className="denim-card">
         <img
           src="https://i.pinimg.com/736x/b7/41/f0/b741f0db06e9b932f336ad9e63b7cee8.jpg"
