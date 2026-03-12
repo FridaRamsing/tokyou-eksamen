@@ -34,6 +34,7 @@ export default function NewsletterSection() {
             className="newsletter-lang-toggle"
             onClick={() => setLangOpen((prev) => !prev)}
             aria-expanded={langOpen}
+            aria-label="Location and language"
           >
             <span>🇬🇧</span>
             <span>English</span>
@@ -41,11 +42,11 @@ export default function NewsletterSection() {
           </button>
           {langOpen && (
             <div className="newsletter-lang-menu">
-              <button type="button">🇬🇧 English</button>
-              <button type="button">🇩🇰 Dansk</button>
-              <button type="button">🇸🇪 Svenska</button>
-              <button type="button">🇫🇷 Français</button>
-              <button type="button">🇩🇪 Deutsch</button>
+              <button type="button" aria-label="English">🇬🇧 English</button>
+              <button type="button" aria-label="Dansk">🇩🇰 Dansk</button>
+              <button type="button" aria-label="Svenska">🇸🇪 Svenska</button>
+              <button type="button" aria-label="Français">🇫🇷 Français</button>
+              <button type="button" aria-label="Deutsch">🇩🇪 Deutsch</button>
             </div>
           )}
         </div>
